@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Find all PIDs matching the pattern
+pids=$(pgrep -f 4-to_infinity_and_beyond)
+
+# Check if any PIDs were found
+if [ -n "$pids" ]; then
+    # Iterate over each PID and kill it
+    for pid in $pids; do
+        kill "$pid"
+    done
+else
+    echo "No matching processes found."
+fi
+

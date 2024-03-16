@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
-
-input = ARGV[0]
-
-if input.nil?
-  puts "school."
-  exit
+if ARGV.empty?
+  puts "Usage: #{$0} <text>"
+  exit 1
 end
+text = ARGV[0]
+pattern = /\bSchool\b/
+matches = text.scan(pattern)
+puts matches.join
 
-puts input.scan(/school/).join
 

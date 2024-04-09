@@ -1,0 +1,27 @@
+secured and monitored web inrastructure for www.foobar.com
+
+Components and Their Roles:
+
+1. Three Firewalls: Enhance security by controlling and monitoring traffic, safeguarding the infrastructure from potential threats.
+
+2. SSL Certificate for HTTPS: Enables secure and encrypted communication, protecting sensitive data during transmission.
+
+3. Three Monitoring Clients: Proactively track system performance, collect data, and ensure efficient and secure operations.
+
+Key Points:
+
+- Firewalls bolster security and block unauthorized access.
+- Serving traffic over HTTPS encrypts data in transit.
+- Monitoring detects issues and tracks system performance.
+- Agents collect data for monitoring from servers.
+- To monitor web server QPS, track incoming request rates.
+
+Issues with this Infrastructure:
+
+1. SSL Termination at Load Balancer: Terminating SSL at the load balancer introduces potential security risks. End-to-end encryption is more secure but adds complexity.
+
+2. Single MySQL Server for Writes: A single MySQL server for writes creates a single point of failure. Implement database clustering and failover mechanisms.
+
+3. Uniform Server Components: Uniform components pose a risk of widespread vulnerabilities. Introduce component diversity to enhance resilience.
+
+This infrastructure ensures security, encrypted traffic, and proactive monitoring, with attention to addressing potential vulnerabilities and emphasizing redundancy.

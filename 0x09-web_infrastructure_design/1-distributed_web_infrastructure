@@ -1,0 +1,35 @@
+Designing a three web infrastructure for www.foobar.com
+
+Components and Their Roles:
+
+1. Two Servers:
+— In this design, two servers are added to provide redundancy and fault tolerance. If one server experiences issues, the other can take over, reducing the risk of downtime.
+
+2. Load Balancer (HAProxy):
+— The load balancer is introduced to distribute incoming traffic across multiple servers. It helps optimize performance and maintain high availability. It’s a critical component for scaling and ensuring reliability.
+
+Specifics about the Infrastructure:
+
+Load Balancer Distribution Algorithm:
+— The load balancer (HAProxy) can be configured with various distribution algorithms like Round Robin, Least Connections, or IP Hash. The choice of algorithm depends on your specific use case and traffic patterns.
+
+Active-Active vs. Active-Passive Setup:
+— In an Active-Active setup, both servers are actively serving traffic simultaneously. In contrast, an Active-Passive setup designates one server as the active server, while the other remains passive and takes over only if the active server fails. Active-Active provides load distribution, but Active-Passive offers better failover capabilities.
+
+Database Primary-Replica (Master-Slave) Cluster:
+— A Primary-Replica cluster in a MySQL database involves one Primary (Master) node and one or more Replica (Slave) nodes. The Primary node handles write operations (INSERT, UPDATE, DELETE), while Replica nodes replicate data from the Primary and serve read operations (SELECT). This setup ensures data redundancy and availability.
+
+Primary vs. Replica Node in Regards to the Application:
+— The Primary node is responsible for write operations, making it the authoritative source for data changes. The application server typically interacts with the Primary node for data updates. Replica nodes serve read operations and can help distribute the read load, improving performance
+
+
+Issues with this Infrastructure:
+
+1. Single Points of Failure (SPOF):
+— While adding redundancy with two servers, there may still be SPOFs in the load balancer, web server, and database. A hardware failure or issue in any of these components can lead to downtime.
+
+2. Security Issues (No Firewall, No HTTPS):
+— Without a firewall or HTTPS encryption, the infrastructure may be vulnerable to security breaches, data interception, and unauthorized access. Implementing security measures is essential.
+
+3. No Monitoring:
+— The absence of monitoring tools leaves the infrastructure blind to performance issues, security threats, and downtime causes. Implementing monitoring solutions is vital for proactive issue detection and resolution.

@@ -1,0 +1,26 @@
+1: A server is a computer sysytem dedicated to providing services, resources, or data to other computers known as clients over anetwork
+
+2: The domain name in this case "foobar.com" is a human readable alias for the servers id address (8.8.8.8). it allows users to type in tha easy name rather than complex ip address
+
+3: the "www" in www.foobar.com is a subdomain, and it typically uses a CNAME (canonical name) record to point to the primary domain or ip address. it ensures that requests for www.foobar.com are directed to the same location as foobar
+
+4: The web server (NGNIX) handles incoming HTTP requests from users browsers. it it manages connections, serves static content and forwads dynamic requests to the application server
+
+5: The application server hosts your web application code. its responsible for running the code base
+
+6: The database (MySQL) stores and manages the structured data for your website. It’s used to retrieve, store, and manipulate information such as user accounts, posts, or product details. The application server communicates with the database to fetch and update data.
+
+7: The server communicates with the user’s computer using the HTTP (Hypertext Transfer Protocol). When a user accesses www.foobar.com, their browser sends an HTTP request to the server. The server processes this request, retrieves the necessary resources from the application server and database, and sends back an HTTP response to the user’s browser, which then renders the website.
+
+
+
+Issues with this Infrastructure:
+
+Single Point of Failure (SPOF):
+- This infrastructure has a single server, which means if the server experiences hardware failure or crashes, the entire website becomes unavailable. To mitigate this, redundancy through load balancing or failover solutions should be considered.
+
+2. Downtime During Maintenance:
+— When maintenance is needed, such as deploying new code or updating the web server, the website may experience downtime. Users won’t be able to access the site during this period. Implementing staging environments and rolling updates can minimize downtime.
+
+3. Limited Scalability:
+— This infrastructure may struggle to handle a sudden surge in incoming traffic. As the website grows, scaling becomes a challenge. To address this, you can consider adding more servers, load balancing, and optimizing your database for scalability.
